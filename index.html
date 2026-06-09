@@ -173,6 +173,67 @@
 
   footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--faint);font-size:12px;letter-spacing:.12em}
 
+  /* ---------- PORTRAIT ---------- */
+  .about-grid{grid-template-columns:0.82fr 1.18fr}
+  .portrait{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);align-self:start}
+  .portrait img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover}
+  .portrait .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 22px 18px;
+    background:linear-gradient(transparent,rgba(8,8,10,.92));font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--text)}
+  .portrait .cap span{display:block;color:var(--accent);font-size:10.5px;margin-top:5px;letter-spacing:.26em}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr}.portrait{max-width:420px}}
+
+  /* ---------- STAT BAND ---------- */
+  .statband{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:60px}
+  .statband .stat{background:var(--bg);padding:34px 22px;text-align:center}
+  .statband .n{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.1rem);color:var(--accent);line-height:1}
+  .statband .l{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+  @media(max-width:760px){.statband{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- LOGO MARQUEE ---------- */
+  .marquee{overflow:hidden;position:relative;margin-top:30px;
+    -webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+            mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .m-track{display:flex;gap:18px;width:max-content;animation:marquee 34s linear infinite}
+  .marquee:hover .m-track{animation-play-state:paused}
+  .logo-card{flex:0 0 auto;width:184px;height:88px;background:#fff;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;padding:20px 24px}
+  .logo-card img{max-width:100%;max-height:100%;object-fit:contain}
+  @keyframes marquee{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  .brand-more{margin-top:30px;color:var(--muted);font-size:14.5px;letter-spacing:.02em}
+  .brand-more b{color:var(--text);font-weight:500}
+
+  /* ---------- POSTERS ---------- */
+  .grp{margin:56px 0 6px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .grp .gt{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--text)}
+  .grp .gr{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+  .grp.first{margin-top:30px}
+  .poster-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:18px}
+  .poster{position:relative;aspect-ratio:2/3;border-radius:6px;overflow:hidden;border:1px solid var(--line);cursor:zoom-in;background:#000}
+  .poster img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:transform .6s ease,opacity .35s}
+  .poster:hover img{transform:scale(1.06);opacity:1}
+  @media(max-width:1000px){.poster-grid{grid-template-columns:repeat(4,1fr)}}
+  @media(max-width:640px){.poster-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:420px){.poster-grid{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- STILLS (rotating grid) ---------- */
+  .stills-sec{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+  .cell{position:relative;aspect-ratio:3/2;border-radius:6px;overflow:hidden;border:1px solid var(--line);background:#0c0c10;cursor:zoom-in}
+  .cell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.94;
+    transition:opacity .9s ease,transform .6s ease}
+  .cell img.swap{opacity:0}
+  .cell:hover img{transform:scale(1.05);opacity:1}
+  .stills-hint{margin-top:18px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+  @media(max-width:900px){.stills-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.stills-grid{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lb{position:fixed;inset:0;background:rgba(5,5,7,.95);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:200;padding:32px;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:94vw;max-height:90vh;border-radius:6px;box-shadow:0 40px 120px rgba(0,0,0,.7)}
+  .lb .lb-close{position:absolute;top:18px;right:26px;color:#fff;font-size:34px;line-height:1;cursor:pointer;opacity:.7;transition:opacity .2s}
+  .lb .lb-close:hover{opacity:1}
+
   /* ---------- REVEAL ---------- */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
   .reveal.in{opacity:1;transform:none}
@@ -185,6 +246,7 @@
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#showreel">Showreel</a>
+    <a href="#stills">Stills</a>
     <a href="#work">Work</a>
     <a href="#brands">Brands</a>
     <a href="#films">Films</a>
@@ -227,19 +289,15 @@
     <div class="sec-label reveal">About</div>
     <h2 class="reveal">Hey — great to see you.</h2>
     <div class="about-grid" style="margin-top:46px">
+      <figure class="portrait reveal">
+        <img src="assets/web/portrait.jpg" alt="Kostiantyn Lishchyna, colorist" loading="lazy" />
+        <figcaption class="cap">Kostiantyn Lishchyna<span>Colorist · DaVinci Resolve</span></figcaption>
+      </figure>
       <div class="reveal">
         <p><strong>My name is Kostiantyn Lishchyna, and I'm a colorist with over 10 years of experience</strong> in the film, advertising and music video industries. My journey started in a video rental store during my school years, moved through editing music videos, and eventually led me to cinematography, editing and — exclusively — working with color.</p>
         <p>I've collaborated with Ukrainian and international artists and directors, helping them bring their creative visions to life through color. My work spans music videos, advertising campaigns and fashion films for well-known brands, some of which have received international awards.</p>
         <p>I built my studio from scratch — selecting and calibrating monitors and essential equipment — which gave me a deep understanding of the technical nuances behind a high-quality final product. I'm comfortable with footage of any format, length or quality, from every type of camera, including graphics, film and 360° video.</p>
         <p><strong>My primary tool is DaVinci Resolve</strong>, with experience in Adobe Premiere and Final Cut Pro. My passion for cinema and deep experience in color grading let me create unforgettable images that enrich the visual experience of viewers.</p>
-      </div>
-      <div class="reveal">
-        <div class="stats">
-          <div class="stat"><div class="n">10+</div><div class="l">Years grading</div></div>
-          <div class="stat"><div class="n">3</div><div class="l">Feature films</div></div>
-          <div class="stat"><div class="n">20+</div><div class="l">Global brands</div></div>
-          <div class="stat"><div class="n">360°</div><div class="l">Any format</div></div>
-        </div>
         <div class="tools">
           <div class="t-title">Toolset</div>
           <div class="chips">
@@ -251,6 +309,14 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="statband reveal">
+      <div class="stat"><div class="n">10+</div><div class="l">Years grading</div></div>
+      <div class="stat"><div class="n">300+</div><div class="l">Music videos</div></div>
+      <div class="stat"><div class="n">150+</div><div class="l">Commercials</div></div>
+      <div class="stat"><div class="n">15+</div><div class="l">Feature films</div></div>
+      <div class="stat"><div class="n">20+</div><div class="l">Global brands</div></div>
     </div>
   </div>
 </section>
@@ -264,6 +330,17 @@
     <div class="reel-frame reveal">
       <iframe src="https://player.vimeo.com/video/719040496?title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Showreel"></iframe>
     </div>
+  </div>
+</section>
+
+<!-- STILLS -->
+<section id="stills" class="stills-sec">
+  <div class="wrap">
+    <div class="sec-label reveal">Frames</div>
+    <h2 class="reveal">Stills from recent work.</h2>
+    <p class="lead reveal" style="margin-bottom:34px">A selection of graded frames across music videos, commercials and fashion film.</p>
+    <div class="stills-grid reveal" id="stillsGrid"></div>
+    <p class="stills-hint reveal">Frames rotate automatically · click any to enlarge</p>
   </div>
 </section>
 
@@ -300,26 +377,22 @@
     <div class="sec-label reveal">Advertising &amp; Fashion Film</div>
     <h2 class="reveal">Brands &amp; campaigns.</h2>
     <p class="lead reveal" style="margin-bottom:34px">Commercials and fashion films for well-known names — some internationally awarded.</p>
-    <div class="brand-grid reveal">
-      <div class="brand-cell">L'Oréal</div>
-      <div class="brand-cell">Maybelline</div>
-      <div class="brand-cell">Frolov</div>
-      <div class="brand-cell">Nike</div>
-      <div class="brand-cell">Adidas</div>
-      <div class="brand-cell">Visa</div>
-      <div class="brand-cell">Uber</div>
-      <div class="brand-cell">Lexus</div>
-      <div class="brand-cell">Cupra</div>
-      <div class="brand-cell">Samsung</div>
-      <div class="brand-cell">Logitech</div>
-      <div class="brand-cell">Volkswagen</div>
-      <div class="brand-cell">Vichy</div>
-      <div class="brand-cell">Sprite</div>
-      <div class="brand-cell">MacPaw</div>
-      <div class="brand-cell">Bolt</div>
-      <div class="brand-cell">Hankey Bannister</div>
-      <div class="brand-cell">Mova</div>
+    <div class="marquee reveal">
+      <div class="m-track" id="logoTrack">
+        <div class="logo-card"><img src="assets/web/logos/logo-01.webp" alt="Maybelline" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-02.webp" alt="Vichy" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-03.webp" alt="Visa" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-04.webp" alt="Samsung" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-05.webp" alt="Nike" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-06.webp" alt="Uber" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-07.webp" alt="Volkswagen" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-08.webp" alt="Frolov" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-09.webp" alt="TTSWTRS" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-10.webp" alt="Logitech" loading="lazy"></div>
+        <div class="logo-card"><img src="assets/web/logos/logo-11.webp" alt="Bolt" loading="lazy"></div>
+      </div>
     </div>
+    <p class="brand-more reveal">Also: <b>L'Oréal</b>, <b>Adidas</b>, <b>Lexus</b>, <b>Cupra</b>, <b>Sprite</b>, <b>MacPaw</b>, <b>Hankey Bannister</b>, <b>Mova</b> and many others.</p>
   </div>
 </section>
 
@@ -328,16 +401,38 @@
   <div class="wrap">
     <div class="sec-label reveal">Cinema</div>
     <h2 class="reveal">Feature films.</h2>
-    <p class="lead reveal" style="margin-bottom:34px">Color work on full-length Ukrainian features.</p>
-    <div class="films reveal">
-      <div class="film"><div class="role">Colorist</div><h3>Zakhar Berkut</h3></div>
-      <div class="film"><div class="role">Colorist</div><h3>I Work at the Cemetery</h3></div>
-      <div class="film"><div class="role">Colorist</div><h3>Tevye's Daughters</h3></div>
+    <p class="lead reveal" style="margin-bottom:6px">Lead (senior) colorist on Ukrainian features and assistant colorist on international titles — credited on IMDb and in the films' end credits.</p>
+
+    <div class="grp first reveal"><span class="gt">Ukrainian features</span><span class="gr">Senior colorist</span></div>
+    <div class="poster-grid reveal">
+      <div class="poster"><img src="assets/web/posters/poster-01.webp" alt="Дорога додому" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-11.webp" alt="The Rising Hawk (Zakhar Berkut)" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-08.webp" alt="I Work at the Cemetery" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-09.webp" alt="Tevye's Daughters" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-19.webp" alt="The Adventures of St. Nicholas" loading="lazy" data-lb></div>
+    </div>
+
+    <div class="grp reveal"><span class="gt">International features</span><span class="gr">Assistant colorist</span></div>
+    <div class="poster-grid reveal">
+      <div class="poster"><img src="assets/web/posters/poster-02.webp" alt="Best Man" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-03.webp" alt="Detective Knight: Redemption" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-04.webp" alt="As We Know It" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-05.webp" alt="Ruthless" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-06.webp" alt="Detective Knight: Independence" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-07.webp" alt="The Girl in the Pool" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-10.webp" alt="Mindcage" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-12.webp" alt="New York Confidential" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-13.webp" alt="Bure Room" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-14.webp" alt="Sam & Kate" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-15.webp" alt="The Locksmith" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-16.webp" alt="Sheroes" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-17.webp" alt="Cash Out" loading="lazy" data-lb></div>
+      <div class="poster"><img src="assets/web/posters/poster-18.webp" alt="One Ranger" loading="lazy" data-lb></div>
     </div>
 
     <div class="holly reveal">
-      <h3>Second colorist — Hollywood features</h3>
-      <p>As a second colorist I've worked on Hollywood films featuring some of the industry's biggest stars, in collaboration with major studios.</p>
+      <h3>Assistant colorist — Hollywood features</h3>
+      <p>As an assistant colorist I've worked on Hollywood films featuring some of the industry's biggest stars, in collaboration with major studios.</p>
       <div class="names">
         <span class="name">Bruce Willis</span>
         <span class="name">John Travolta</span>
@@ -367,6 +462,8 @@
   </div>
 </section>
 
+<div class="lb" id="lightbox"><span class="lb-close" id="lbClose">×</span><img id="lbImg" src="" alt=""></div>
+
 <footer>
   © <span id="yr"></span> Kostiantyn Lishchyna — Colorist · Remote worldwide
 </footer>
@@ -395,6 +492,61 @@
   document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%4,3)*0.08)+'s';io.observe(el);});
 
   document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // seamless logo marquee: duplicate the set
+  const lt=document.getElementById('logoTrack');
+  if(lt){lt.innerHTML+=lt.innerHTML;}
+
+  // rotating stills grid
+  (function(){
+    const grid=document.getElementById('stillsGrid');
+    if(!grid)return;
+    const POOL=53, TILES=12;
+    const all=Array.from({length:POOL},(_,i)=>`assets/web/stills/still-${String(i+1).padStart(2,'0')}.jpg`);
+    // shuffle pool
+    for(let i=all.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[all[i],all[j]]=[all[j],all[i]];}
+    const shown=all.slice(0,TILES);
+    let pointer=TILES;
+    shown.forEach(src=>{
+      const cell=document.createElement('div');cell.className='cell';
+      const img=document.createElement('img');img.src=src;img.alt='Graded frame';img.loading='lazy';img.dataset.lb='';
+      cell.appendChild(img);grid.appendChild(cell);
+    });
+    const imgs=Array.from(grid.querySelectorAll('img'));
+    function nextSrc(){
+      // next image from pool not currently displayed
+      let tries=0;
+      while(tries<POOL){
+        const s=all[pointer%POOL];pointer++;tries++;
+        if(!imgs.some(im=>im.getAttribute('src')===s))return s;
+      }
+      return all[pointer%POOL];
+    }
+    let paused=false;
+    grid.addEventListener('mouseenter',()=>paused=true);
+    grid.addEventListener('mouseleave',()=>paused=false);
+    setInterval(()=>{
+      if(paused||document.hidden)return;
+      const img=imgs[Math.random()*imgs.length|0];
+      const src=nextSrc();
+      const pre=new Image();pre.onload=()=>{
+        img.classList.add('swap');
+        setTimeout(()=>{img.setAttribute('src',src);img.classList.remove('swap');},700);
+      };pre.src=src;
+    },2600);
+  })();
+
+  // lightbox (event delegation — covers dynamic stills)
+  const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg');
+  function openLb(src){lbImg.src=src;lb.classList.add('open');document.body.style.overflow='hidden';}
+  function closeLb(){lb.classList.remove('open');document.body.style.overflow='';lbImg.src='';}
+  document.addEventListener('click',e=>{
+    const img=e.target.closest('img[data-lb]');
+    if(img&&!lb.classList.contains('open')){openLb(img.currentSrc||img.getAttribute('src'));}
+  });
+  lb.addEventListener('click',closeLb);
+  document.getElementById('lbClose').addEventListener('click',closeLb);
+  addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
 </script>
 </body>
 </html>
