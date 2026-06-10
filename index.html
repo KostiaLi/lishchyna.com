@@ -234,6 +234,27 @@
   .lb .lb-close{position:absolute;top:18px;right:26px;color:#fff;font-size:34px;line-height:1;cursor:pointer;opacity:.7;transition:opacity .2s}
   .lb .lb-close:hover{opacity:1}
 
+  /* ---------- LANG TOGGLE ---------- */
+  .lang-btn{background:none;border:1px solid var(--line);color:var(--muted);font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;padding:7px 11px;border-radius:40px;cursor:pointer;transition:all .25s}
+  .lang-btn:hover{border-color:var(--accent);color:var(--text)}
+  .lang-btn b{color:var(--accent);font-weight:600}
+  .nav-right{display:flex;align-items:center;gap:14px}
+
+  /* ---------- STUDIO ---------- */
+  .studio{margin-top:64px}
+  .studio .t-title{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:16px}
+  .studio-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:14px}
+  .studio-grid figure{margin:0;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#000}
+  .studio-grid img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;opacity:.95;transition:transform .5s,opacity .3s}
+  .studio-grid figure:hover img{transform:scale(1.04);opacity:1}
+  @media(max-width:700px){.studio-grid{grid-template-columns:1fr}}
+
+  /* statband to 6 */
+  .statband{grid-template-columns:repeat(6,1fr)}
+  @media(max-width:900px){.statband{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:560px){.statband{grid-template-columns:repeat(2,1fr)}}
+
   /* ---------- REVEAL ---------- */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
   .reveal.in{opacity:1;transform:none}
@@ -244,15 +265,18 @@
 <nav id="nav">
   <a class="brand" href="#top">LISHCHYNA<b>.</b></a>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#showreel">Showreel</a>
-    <a href="#stills">Stills</a>
-    <a href="#work">Work</a>
-    <a href="#brands">Brands</a>
-    <a href="#films">Films</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#showreel" data-i18n="nav.showreel">Showreel</a>
+    <a href="#stills" data-i18n="nav.stills">Stills</a>
+    <a href="#work" data-i18n="nav.work">Work</a>
+    <a href="#brands" data-i18n="nav.brands">Brands</a>
+    <a href="#films" data-i18n="nav.films">Films</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="menu">☰</button>
+  <div class="nav-right">
+    <button class="lang-btn" id="langBtn" aria-label="switch language"><b>EN</b> / UA</button>
+    <button class="nav-toggle" id="navToggle" aria-label="menu">☰</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -265,12 +289,12 @@
   <div class="hero-grain"></div>
   <div class="hero-content">
     <div class="wrap">
-      <div class="eyebrow reveal">Colorist · DaVinci Resolve</div>
+      <div class="eyebrow reveal" data-i18n="hero.eyebrow">Colorist · DaVinci Resolve</div>
       <h1 class="reveal"><span>Kostiantyn</span><span>Lishchyna</span></h1>
-      <p class="sub reveal">Crafting color for film, advertising and music video — 10+ years turning footage into images that stay with the viewer.</p>
+      <p class="sub reveal" data-i18n="hero.sub">Crafting color for film, advertising and music video — 14+ years turning footage into images that stay with the viewer.</p>
       <div class="cta-row reveal">
-        <a class="btn" href="https://vimeo.com/719040496" target="_blank" rel="noopener"><span class="play">▶</span> Watch Showreel</a>
-        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        <a class="btn" href="https://vimeo.com/719040496" target="_blank" rel="noopener"><span class="play">▶</span> <span data-i18n="hero.cta1">Watch Showreel</span></a>
+        <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta2">Get in touch</a>
       </div>
     </div>
   </div>
@@ -286,37 +310,46 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-label reveal">About</div>
-    <h2 class="reveal">Hey — great to see you.</h2>
+    <div class="sec-label reveal" data-i18n="about.label">About</div>
+    <h2 class="reveal" data-i18n="about.h2">Hey — great to see you.</h2>
     <div class="about-grid" style="margin-top:46px">
       <figure class="portrait reveal">
         <img src="assets/web/portrait.jpg" alt="Kostiantyn Lishchyna, colorist" loading="lazy" />
-        <figcaption class="cap">Kostiantyn Lishchyna<span>Colorist · DaVinci Resolve</span></figcaption>
+        <figcaption class="cap">Kostiantyn Lishchyna<span data-i18n="about.cap">Colorist · DaVinci Resolve</span></figcaption>
       </figure>
       <div class="reveal">
-        <p><strong>My name is Kostiantyn Lishchyna, and I'm a colorist with over 10 years of experience</strong> in the film, advertising and music video industries. My journey started in a video rental store during my school years, moved through editing music videos, and eventually led me to cinematography, editing and — exclusively — working with color.</p>
-        <p>I've collaborated with Ukrainian and international artists and directors, helping them bring their creative visions to life through color. My work spans music videos, advertising campaigns and fashion films for well-known brands, some of which have received international awards.</p>
-        <p>I built my studio from scratch — selecting and calibrating monitors and essential equipment — which gave me a deep understanding of the technical nuances behind a high-quality final product. I'm comfortable with footage of any format, length or quality, from every type of camera, including graphics, film and 360° video.</p>
-        <p><strong>My primary tool is DaVinci Resolve</strong>, with experience in Adobe Premiere and Final Cut Pro. My passion for cinema and deep experience in color grading let me create unforgettable images that enrich the visual experience of viewers.</p>
+        <p data-i18n="about.p1"><strong>My name is Kostiantyn Lishchyna, and I'm a colorist with over 14 years of experience</strong> in the film, advertising and music video industries. My journey started in a video rental store during my school years, moved through editing music videos, and eventually led me to cinematography, editing and — exclusively — working with color.</p>
+        <p data-i18n="about.p2">I've collaborated with Ukrainian and international artists and directors, helping them bring their creative visions to life through color. My work spans music videos, advertising campaigns and fashion films for well-known brands, some of which have received international awards.</p>
+        <p data-i18n="about.p3">I built my studio from scratch — selecting and calibrating monitors and essential equipment — which gave me a deep understanding of the technical nuances behind a high-quality final product. I'm comfortable with footage of any format, length or quality, from every type of camera, including graphics, film and 360° video.</p>
+        <p data-i18n="about.p4"><strong>My primary tool is DaVinci Resolve</strong>, with experience in Adobe Premiere and Final Cut Pro. My passion for cinema and deep experience in color grading let me create unforgettable images that enrich the visual experience of viewers.</p>
         <div class="tools">
-          <div class="t-title">Toolset</div>
+          <div class="t-title" data-i18n="about.tools">Toolset</div>
           <div class="chips">
             <span class="chip">DaVinci Resolve</span>
             <span class="chip">Adobe Premiere</span>
             <span class="chip">Final Cut Pro</span>
-            <span class="chip">Calibrated grading suite</span>
-            <span class="chip">Remote workflow</span>
+            <span class="chip" data-i18n="chip.suite">Calibrated grading suite</span>
+            <span class="chip" data-i18n="chip.remote">Remote workflow</span>
           </div>
         </div>
       </div>
     </div>
 
     <div class="statband reveal">
-      <div class="stat"><div class="n">10+</div><div class="l">Years grading</div></div>
-      <div class="stat"><div class="n">300+</div><div class="l">Music videos</div></div>
-      <div class="stat"><div class="n">150+</div><div class="l">Commercials</div></div>
-      <div class="stat"><div class="n">15+</div><div class="l">Feature films</div></div>
-      <div class="stat"><div class="n">20+</div><div class="l">Global brands</div></div>
+      <div class="stat"><div class="n">14+</div><div class="l" data-i18n="stat.years">Years grading</div></div>
+      <div class="stat"><div class="n">300+</div><div class="l" data-i18n="stat.mv">Music videos</div></div>
+      <div class="stat"><div class="n">150+</div><div class="l" data-i18n="stat.com">Commercials</div></div>
+      <div class="stat"><div class="n">15+</div><div class="l" data-i18n="stat.feat">Feature films</div></div>
+      <div class="stat"><div class="n">10+</div><div class="l" data-i18n="stat.doc">Doc films</div></div>
+      <div class="stat"><div class="n">20+</div><div class="l" data-i18n="stat.brands">Global brands</div></div>
+    </div>
+
+    <div class="studio reveal">
+      <div class="t-title" data-i18n="studio.title">The studio</div>
+      <div class="studio-grid">
+        <figure><img src="assets/web/studio-1.jpg" alt="Color grading suite" loading="lazy" data-lb></figure>
+        <figure><img src="assets/web/studio-2.jpg" alt="Working at the DaVinci Resolve panel" loading="lazy" data-lb></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -324,9 +357,9 @@
 <!-- SHOWREEL -->
 <section id="showreel" class="reel-sec">
   <div class="wrap">
-    <div class="sec-label reveal">Showreel</div>
-    <h2 class="reveal">A look at the work.</h2>
-    <p class="lead reveal" style="margin-bottom:40px">A selection of recent color grading across music videos, commercials and film.</p>
+    <div class="sec-label reveal" data-i18n="reel.label">Showreel</div>
+    <h2 class="reveal" data-i18n="reel.h2">A look at the work.</h2>
+    <p class="lead reveal" style="margin-bottom:40px" data-i18n="reel.lead">A selection of recent color grading across music videos, commercials and film.</p>
     <div class="reel-frame reveal">
       <iframe src="https://player.vimeo.com/video/719040496?title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Showreel"></iframe>
     </div>
@@ -336,20 +369,20 @@
 <!-- STILLS -->
 <section id="stills" class="stills-sec">
   <div class="wrap">
-    <div class="sec-label reveal">Frames</div>
-    <h2 class="reveal">Stills from recent work.</h2>
-    <p class="lead reveal" style="margin-bottom:34px">A selection of graded frames across music videos, commercials and fashion film.</p>
+    <div class="sec-label reveal" data-i18n="stills.label">Frames</div>
+    <h2 class="reveal" data-i18n="stills.h2">Stills from recent work.</h2>
+    <p class="lead reveal" style="margin-bottom:34px" data-i18n="stills.lead">A selection of graded frames across music videos, commercials and fashion film.</p>
     <div class="stills-grid reveal" id="stillsGrid"></div>
-    <p class="stills-hint reveal">Frames rotate automatically · click any to enlarge</p>
+    <p class="stills-hint reveal" data-i18n="stills.hint">Frames rotate automatically · click any to enlarge</p>
   </div>
 </section>
 
 <!-- WORK / ARTISTS -->
 <section id="work">
   <div class="wrap">
-    <div class="sec-label reveal">Music Videos</div>
-    <h2 class="reveal">Artists I've graded for.</h2>
-    <p class="lead reveal" style="margin-bottom:34px">Color for Ukrainian and international musicians and their directors.</p>
+    <div class="sec-label reveal" data-i18n="work.label">Music Videos</div>
+    <h2 class="reveal" data-i18n="work.h2">Artists I've graded for.</h2>
+    <p class="lead reveal" style="margin-bottom:34px" data-i18n="work.lead">Color for Ukrainian and international musicians and their directors.</p>
     <div class="artist-wall reveal">
       <span class="artist">Ziferblat</span><span class="artist dot">·</span>
       <span class="artist">Alyona Alyona</span><span class="artist dot">·</span>
@@ -374,9 +407,9 @@
 <!-- BRANDS -->
 <section id="brands" class="brands-sec">
   <div class="wrap">
-    <div class="sec-label reveal">Advertising &amp; Fashion Film</div>
-    <h2 class="reveal">Brands &amp; campaigns.</h2>
-    <p class="lead reveal" style="margin-bottom:34px">Commercials and fashion films for well-known names — some internationally awarded.</p>
+    <div class="sec-label reveal" data-i18n="brands.label">Advertising &amp; Fashion Film</div>
+    <h2 class="reveal" data-i18n="brands.h2">Brands &amp; campaigns.</h2>
+    <p class="lead reveal" style="margin-bottom:34px" data-i18n="brands.lead">Commercials and fashion films for well-known names — some internationally awarded.</p>
     <div class="marquee reveal">
       <div class="m-track" id="logoTrack">
         <div class="logo-card"><img src="assets/web/logos/logo-01.webp" alt="Maybelline" loading="lazy"></div>
@@ -392,18 +425,18 @@
         <div class="logo-card"><img src="assets/web/logos/logo-11.webp" alt="Bolt" loading="lazy"></div>
       </div>
     </div>
-    <p class="brand-more reveal">Also: <b>L'Oréal</b>, <b>Adidas</b>, <b>Lexus</b>, <b>Cupra</b>, <b>Sprite</b>, <b>MacPaw</b>, <b>Hankey Bannister</b>, <b>Mova</b> and many others.</p>
+    <p class="brand-more reveal" data-i18n="brands.more">Also: <b>L'Oréal</b>, <b>Adidas</b>, <b>Lexus</b>, <b>Cupra</b>, <b>Sprite</b>, <b>MacPaw</b>, <b>Hankey Bannister</b>, <b>Mova</b> and many others.</p>
   </div>
 </section>
 
 <!-- FILMS -->
 <section id="films">
   <div class="wrap">
-    <div class="sec-label reveal">Cinema</div>
-    <h2 class="reveal">Feature films.</h2>
-    <p class="lead reveal" style="margin-bottom:6px">Lead (senior) colorist on Ukrainian features and assistant colorist on international titles — credited on IMDb and in the films' end credits.</p>
+    <div class="sec-label reveal" data-i18n="films.label">Cinema</div>
+    <h2 class="reveal" data-i18n="films.h2">Feature films.</h2>
+    <p class="lead reveal" style="margin-bottom:6px" data-i18n="films.lead">Lead (senior) colorist on Ukrainian features and assistant colorist on Hollywood features.</p>
 
-    <div class="grp first reveal"><span class="gt">Ukrainian features</span><span class="gr">Senior colorist</span></div>
+    <div class="grp first reveal"><span class="gt" data-i18n="films.g1t">Ukrainian features</span><span class="gr" data-i18n="films.g1r">Senior colorist</span></div>
     <div class="poster-grid reveal">
       <div class="poster"><img src="assets/web/posters/poster-01.webp" alt="Дорога додому" loading="lazy" data-lb></div>
       <div class="poster"><img src="assets/web/posters/poster-11.webp" alt="The Rising Hawk (Zakhar Berkut)" loading="lazy" data-lb></div>
@@ -412,7 +445,7 @@
       <div class="poster"><img src="assets/web/posters/poster-19.webp" alt="The Adventures of St. Nicholas" loading="lazy" data-lb></div>
     </div>
 
-    <div class="grp reveal"><span class="gt">International features</span><span class="gr">Assistant colorist</span></div>
+    <div class="grp reveal"><span class="gt" data-i18n="films.g2t">Hollywood features</span><span class="gr" data-i18n="films.g2r">Assistant colorist</span></div>
     <div class="poster-grid reveal">
       <div class="poster"><img src="assets/web/posters/poster-02.webp" alt="Best Man" loading="lazy" data-lb></div>
       <div class="poster"><img src="assets/web/posters/poster-03.webp" alt="Detective Knight: Redemption" loading="lazy" data-lb></div>
@@ -431,8 +464,8 @@
     </div>
 
     <div class="holly reveal">
-      <h3>Assistant colorist — Hollywood features</h3>
-      <p>As an assistant colorist I've worked on Hollywood films featuring some of the industry's biggest stars, in collaboration with major studios.</p>
+      <h3 data-i18n="holly.h3">Assistant colorist — Hollywood features</h3>
+      <p data-i18n="holly.p">As an assistant colorist I've worked on Hollywood films featuring some of the industry's biggest stars, in collaboration with major studios.</p>
       <div class="names">
         <span class="name">Bruce Willis</span>
         <span class="name">John Travolta</span>
@@ -452,12 +485,12 @@
 <!-- CONTACT -->
 <section id="contact" class="contact-sec">
   <div class="wrap">
-    <div class="sec-label reveal" style="justify-content:center">Contact</div>
-    <h2 class="reveal serif">Let's color your next project.</h2>
+    <div class="sec-label reveal" style="justify-content:center" data-i18n="contact.label">Contact</div>
+    <h2 class="reveal serif" data-i18n="contact.h2">Let's color your next project.</h2>
     <a class="email reveal" href="mailto:colorist@lishchyna.com">colorist@lishchyna.com</a>
     <div class="socials reveal">
       <a href="https://www.instagram.com/colorist.lishchyna" target="_blank" rel="noopener">Instagram · @colorist.lishchyna</a>
-      <a href="https://vimeo.com/719040496" target="_blank" rel="noopener">Vimeo · Showreel</a>
+      <a href="https://vimeo.com/719040496" target="_blank" rel="noopener" data-i18n="contact.reel">Vimeo · Showreel</a>
     </div>
   </div>
 </section>
@@ -465,7 +498,7 @@
 <div class="lb" id="lightbox"><span class="lb-close" id="lbClose">×</span><img id="lbImg" src="" alt=""></div>
 
 <footer>
-  © <span id="yr"></span> Kostiantyn Lishchyna — Colorist · Remote worldwide
+  © <span id="yr"></span> Kostiantyn Lishchyna — <span data-i18n="footer.tag">Colorist · Remote worldwide</span>
 </footer>
 
 <script>
@@ -547,6 +580,52 @@
   lb.addEventListener('click',closeLb);
   document.getElementById('lbClose').addEventListener('click',closeLb);
   addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
+
+  // ---------- i18n: EN / UA ----------
+  const UA={
+    'nav.about':`Про мене`,'nav.showreel':`Шоуріл`,'nav.stills':`Кадри`,'nav.work':`Кліпи`,
+    'nav.brands':`Бренди`,'nav.films':`Кіно`,'nav.contact':`Контакти`,
+    'hero.eyebrow':`Колорист · DaVinci Resolve`,
+    'hero.sub':`Колір для кіно, реклами та музичного відео — понад 14 років перетворюю матеріал на зображення, які запам'ятовуються.`,
+    'hero.cta1':`Дивитися шоуріл`,'hero.cta2':`Зв'язатися`,
+    'about.label':`Про мене`,'about.h2':`Привіт — радий вас бачити.`,'about.cap':`Колорист · DaVinci Resolve`,
+    'about.p1':`<strong>Мене звати Костянтин Ліщина, я колорист із понад 14-річним досвідом</strong> у кіно, рекламі та музичному відео. Мій шлях почався ще зі шкільних років у пункті відеопрокату, далі — монтаж музичних кліпів, що згодом привів мене до операторської роботи, монтажу і — виключно — роботи з кольором.`,
+    'about.p2':`Я співпрацював з українськими та міжнародними артистами й режисерами, допомагаючи втілювати їхні творчі задуми через колір. Моя робота охоплює музичні відео, рекламні кампанії та fashion-фільми для відомих брендів, деякі з яких отримали міжнародні нагороди.`,
+    'about.p3':`Свою студію я збудував з нуля — підбирав і калібрував монітори та необхідне обладнання, що дало глибоке розуміння технічних нюансів якісного фінального продукту. Я працюю з матеріалом будь-якого формату, тривалості чи якості, з усіх типів камер — включно з графікою, плівкою та відео 360°.`,
+    'about.p4':`<strong>Мій основний інструмент — DaVinci Resolve</strong>, також маю досвід роботи в Adobe Premiere та Final Cut Pro. Любов до кіно й глибокий досвід у кольорокорекції дають мені змогу створювати незабутні образи, що збагачують візуальне сприйняття глядача.`,
+    'about.tools':`Інструменти`,'chip.suite':`Калібрована студія`,'chip.remote':`Віддалена робота`,
+    'stat.years':`Років досвіду`,'stat.mv':`Музичних відео`,'stat.com':`Реклам`,
+    'stat.feat':`Повнометражних фільмів`,'stat.doc':`Документальних фільмів`,'stat.brands':`Світових брендів`,
+    'studio.title':`Студія`,
+    'reel.label':`Шоуріл`,'reel.h2':`Погляд на роботи.`,'reel.lead':`Добірка нещодавньої кольорокорекції — музичні відео, реклама та кіно.`,
+    'stills.label':`Кадри`,'stills.h2':`Кадри з нещодавніх робіт.`,
+    'stills.lead':`Добірка кадрів з кольорокорекцією — музичні відео, реклама та fashion-фільми.`,
+    'stills.hint':`Кадри змінюються автоматично · натисніть, щоб збільшити`,
+    'work.label':`Музичні відео`,'work.h2':`Артисти, яким я робив колір.`,'work.lead':`Колір для українських та міжнародних музикантів і їхніх режисерів.`,
+    'brands.label':`Реклама та Fashion-фільми`,'brands.h2':`Бренди та кампанії.`,
+    'brands.lead':`Реклама та fashion-фільми для відомих імен — деякі відзначені міжнародними нагородами.`,
+    'brands.more':`Також: <b>L'Oréal</b>, <b>Adidas</b>, <b>Lexus</b>, <b>Cupra</b>, <b>Sprite</b>, <b>MacPaw</b>, <b>Hankey Bannister</b>, <b>Mova</b> та багато інших.`,
+    'films.label':`Кіно`,'films.h2':`Повнометражні фільми.`,
+    'films.lead':`Головний (senior) колорист українських фільмів та асистент колориста голлівудських стрічок.`,
+    'films.g1t':`Українські фільми`,'films.g1r':`Головний колорист`,
+    'films.g2t':`Голлівудські фільми`,'films.g2r':`Асистент колориста`,
+    'holly.h3':`Асистент колориста — голлівудські фільми`,
+    'holly.p':`Як асистент колориста я працював над голлівудськими фільмами за участю найбільших зірок індустрії, у співпраці з провідними студіями.`,
+    'contact.label':`Контакти`,'contact.h2':`Зробімо колір вашого наступного проєкту.`,'contact.reel':`Vimeo · Шоуріл`,
+    'footer.tag':`Колорист · Працюю віддалено по всьому світу`
+  };
+  const i18nEls=document.querySelectorAll('[data-i18n]');
+  i18nEls.forEach(el=>el._en=el.innerHTML);
+  const langBtn=document.getElementById('langBtn');
+  function setLang(lang){
+    i18nEls.forEach(el=>{const k=el.getAttribute('data-i18n');el.innerHTML=(lang==='ua'&&UA[k])?UA[k]:el._en;});
+    document.documentElement.lang=(lang==='ua')?'uk':'en';
+    langBtn.innerHTML=(lang==='ua')?`EN / <b>UA</b>`:`<b>EN</b> / UA`;
+    try{localStorage.setItem('lang',lang);}catch(e){}
+  }
+  let saved='en';try{saved=localStorage.getItem('lang')||'en';}catch(e){}
+  setLang(saved);
+  langBtn.addEventListener('click',()=>setLang(document.documentElement.lang==='uk'?'en':'ua'));
 </script>
 </body>
 </html>
