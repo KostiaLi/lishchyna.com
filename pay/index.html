@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Реквізити для оплати — Kostiantyn Lishchyna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08080a;--bg-2:#0e0e12;--panel:#121217;--line:rgba(255,255,255,.08);
+    --text:#f4f3f0;--muted:#9a988f;--faint:#5f5d57;--accent:#d8a657;--ok:#5bc2c8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:
+      radial-gradient(120% 70% at 80% -10%, rgba(216,166,87,.10), transparent 55%),
+      radial-gradient(120% 80% at 0% 110%, rgba(91,194,200,.08), transparent 55%),
+      var(--bg);
+    color:var(--text);font-family:'Inter',system-ui,sans-serif;font-weight:300;
+    min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;
+    -webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#000}
+
+  .card{width:100%;max-width:620px;background:linear-gradient(180deg,var(--panel),var(--bg-2));
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    box-shadow:0 50px 130px -40px rgba(0,0,0,.9)}
+  .grade{display:grid;grid-template-columns:repeat(6,1fr);height:6px}
+  .grade div{height:100%}
+
+  .head{padding:38px 36px 26px}
+  .brand{font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+  .brand b{color:var(--accent);font-weight:600}
+  .head h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.2rem;margin-top:16px;line-height:1.1}
+  .head p{color:var(--muted);font-size:14.5px;margin-top:8px}
+
+  .rows{padding:6px 36px 14px}
+  .row{padding:20px 0;border-top:1px solid var(--line);display:flex;align-items:flex-start;gap:16px;justify-content:space-between}
+  .row:first-child{border-top:0}
+  .row .info{min-width:0}
+  .row .lab{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+  .row .lab em{color:var(--muted);font-style:normal;text-transform:none;letter-spacing:.02em}
+  .row .val{font-size:16px;color:var(--text);word-break:break-word;line-height:1.45}
+  .row .val.mono{font-family:'JetBrains Mono',monospace;letter-spacing:.02em;font-size:15.5px}
+  .copy{flex:0 0 auto;background:transparent;border:1px solid var(--line);color:var(--muted);
+    border-radius:8px;padding:9px 12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    cursor:pointer;transition:all .22s;display:inline-flex;align-items:center;gap:7px;font-family:inherit}
+  .copy:hover{border-color:var(--accent);color:var(--text)}
+  .copy.done{border-color:var(--ok);color:var(--ok)}
+  .copy svg{width:13px;height:13px}
+
+  .foot{padding:22px 36px 34px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;border-top:1px solid var(--line)}
+  .copy-all{background:var(--accent);color:#000;border:0;border-radius:9px;padding:13px 22px;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:opacity .2s;font-family:inherit}
+  .copy-all:hover{opacity:.88}
+  .copy-all.done{background:var(--ok)}
+  .back{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+  .back:hover{color:var(--text)}
+
+  @media(max-width:520px){
+    .head,.rows,.foot{padding-left:24px;padding-right:24px}
+    .row{flex-direction:column;gap:12px}
+    .copy{align-self:flex-start}
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="grade" aria-hidden="true">
+      <div style="background:#1c2b33"></div><div style="background:#2d4a4f"></div>
+      <div style="background:#6b6048"></div><div style="background:#b08a4f"></div>
+      <div style="background:#d8a657"></div><div style="background:#e9d6a8"></div>
+    </div>
+
+    <div class="head">
+      <div class="brand">LISHCHYNA<b>.</b></div>
+      <h1>Реквізити для оплати</h1>
+      <p>Payment details · ФОП Ліщина Костянтин Олександрович</p>
+    </div>
+
+    <div class="rows">
+      <div class="row">
+        <div class="info">
+          <div class="lab">IBAN · <em>рахунок</em></div>
+          <div class="val mono" data-copy>UA153220010000026002300009890</div>
+        </div>
+        <button class="copy" aria-label="Копіювати"></button>
+      </div>
+
+      <div class="row">
+        <div class="info">
+          <div class="lab">Отримувач · <em>Recipient</em></div>
+          <div class="val" data-copy>ФОП Ліщина Костянтин Олександрович</div>
+        </div>
+        <button class="copy" aria-label="Копіювати"></button>
+      </div>
+
+      <div class="row">
+        <div class="info">
+          <div class="lab">Код ЄДРПОУ · <em>Tax ID</em></div>
+          <div class="val mono" data-copy>3261018416</div>
+        </div>
+        <button class="copy" aria-label="Копіювати"></button>
+      </div>
+
+      <div class="row">
+        <div class="info">
+          <div class="lab">Банк · <em>Bank</em></div>
+          <div class="val">Універсал Банк</div>
+        </div>
+        <button class="copy" data-copy-text="Універсал Банк" aria-label="Копіювати"></button>
+      </div>
+
+      <div class="row">
+        <div class="info">
+          <div class="lab">МФО</div>
+          <div class="val mono" data-copy>322001</div>
+        </div>
+        <button class="copy" aria-label="Копіювати"></button>
+      </div>
+
+      <div class="row">
+        <div class="info">
+          <div class="lab">Призначення платежу · <em>Purpose</em></div>
+          <div class="val" data-copy>Сплата за кольорокорекцію відео матеріалів аудіовізуального твору</div>
+        </div>
+        <button class="copy" aria-label="Копіювати"></button>
+      </div>
+    </div>
+
+    <div class="foot">
+      <a class="back" href="/">← На сайт</a>
+      <button class="copy-all" id="copyAll">Копіювати всі реквізити</button>
+    </div>
+  </main>
+
+<script>
+  const ICON_COPY='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+  const ICON_OK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5L20 6"/></svg>';
+
+  function flash(btn,label){
+    btn.classList.add('done');
+    btn.innerHTML=ICON_OK+'<span class="t">Скопійовано</span>';
+    setTimeout(()=>{btn.classList.remove('done');btn.innerHTML=ICON_COPY+'<span class="t">'+label+'</span>';},1600);
+  }
+  async function copy(text){
+    try{await navigator.clipboard.writeText(text);return true;}
+    catch(e){
+      const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();
+      let ok=false;try{ok=document.execCommand('copy');}catch(_){}
+      document.body.removeChild(ta);return ok;
+    }
+  }
+
+  document.querySelectorAll('.copy').forEach(btn=>{
+    btn.innerHTML=ICON_COPY+'<span class="t">Копіювати</span>';
+    btn.addEventListener('click',async()=>{
+      const row=btn.closest('.row');
+      const text=btn.dataset.copyText || row.querySelector('[data-copy]').textContent.trim();
+      if(await copy(text)) flash(btn,'Копіювати');
+    });
+  });
+
+  document.getElementById('copyAll').addEventListener('click',async function(){
+    const lines=[
+      'IBAN: UA153220010000026002300009890',
+      'Отримувач: ФОП Ліщина Костянтин Олександрович',
+      'Код ЄДРПОУ: 3261018416',
+      'Банк: Універсал Банк',
+      'МФО: 322001',
+      'Призначення платежу: Сплата за кольорокорекцію відео матеріалів аудіовізуального твору'
+    ].join('\n');
+    if(await copy(lines)){
+      this.classList.add('done');const o=this.textContent;this.textContent='Скопійовано ✓';
+      setTimeout(()=>{this.classList.remove('done');this.textContent=o;},1700);
+    }
+  });
+</script>
+</body>
+</html>
