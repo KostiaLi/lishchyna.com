@@ -182,11 +182,22 @@
   @media(max-width:820px){.about-grid{grid-template-columns:1fr}.portrait{max-width:420px}}
 
   /* ---------- STAT BAND ---------- */
-  .statband{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:60px}
-  .statband .stat{background:var(--bg);padding:34px 22px;text-align:center}
-  .statband .n{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.1rem);color:var(--accent);line-height:1}
-  .statband .l{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:12px}
-  @media(max-width:760px){.statband{grid-template-columns:repeat(2,1fr)}}
+  .statband{position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;
+    gap:40px 16px;margin-top:66px;padding-bottom:96px}
+  .statband .stat{flex:1 1 130px;text-align:center;position:relative;z-index:1}
+  .statband .stat::after{content:"";position:absolute;top:12%;right:-8px;height:54%;width:1px;background:var(--line);opacity:.55}
+  .statband .stat:last-child::after{display:none}
+  .statband .n{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(2.5rem,4.8vw,3.6rem);color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+  .statband .l{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+  /* branching "veins" from the experience stat */
+  .veins{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible}
+  .vein{fill:none;stroke:var(--accent);stroke-width:1;opacity:.30;
+    transition:stroke-dashoffset 1.8s cubic-bezier(.22,1,.36,1)}
+  .vein.twig{opacity:.16;stroke-width:.8}
+  .vein-node{fill:var(--accent);opacity:.55;transition:opacity .6s ease}
+  .vein-node.root{opacity:.95}
+  @media(max-width:680px){.statband{gap:34px 10px;padding-bottom:64px}.statband .stat{flex-basis:30%}
+    .statband .stat::after{display:none}}
 
   /* ---------- LOGO MARQUEE ---------- */
   .marquee{overflow:hidden;position:relative;margin-top:30px;
@@ -275,10 +286,6 @@
   .studio-grid figure:hover img{transform:scale(1.04);opacity:1}
   @media(max-width:700px){.studio-grid{grid-template-columns:1fr}}
 
-  /* statband to 6 */
-  .statband{grid-template-columns:repeat(6,1fr)}
-  @media(max-width:900px){.statband{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:560px){.statband{grid-template-columns:repeat(2,1fr)}}
 
   /* ---------- REVEAL ---------- */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
@@ -314,7 +321,7 @@
     <div class="wrap">
       <div class="eyebrow reveal" data-i18n="hero.eyebrow">Colorist · DaVinci Resolve</div>
       <h1 class="reveal">Kostiantyn Lishchyna</h1>
-      <p class="sub reveal" data-i18n="hero.sub">Crafting color for film, advertising and music video — 14+ years turning footage into images that stay with the viewer.</p>
+      <p class="sub reveal" data-i18n="hero.sub">Crafting color for film, advertising and music video — 15+ years turning footage into images that stay with the viewer.</p>
       <div class="cta-row reveal">
         <a class="btn" href="https://vimeo.com/719040496" target="_blank" rel="noopener"><span class="play">▶</span> <span data-i18n="hero.cta1">Watch Showreel</span></a>
         <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta2">Get in touch</a>
@@ -341,16 +348,17 @@
         <figcaption class="cap">Kostiantyn Lishchyna<span data-i18n="about.cap">Colorist · DaVinci Resolve</span></figcaption>
       </figure>
       <div class="reveal">
-        <p data-i18n="about.p1"><strong>I'm Kostiantyn Lishchyna — a colorist with 14+ years in film, advertising and music video.</strong> I started out editing music videos, which drew me into cinematography and editing, and eventually into working exclusively with color.</p>
+        <p data-i18n="about.p1"><strong>I'm Kostiantyn Lishchyna — a colorist with 15+ years in film, advertising and music video.</strong> I started out editing music videos back in 2011, which drew me into cinematography and editing, and eventually into working exclusively with color.</p>
         <p data-i18n="about.p2">Over the years I've graded for Ukrainian and international artists, directors and brands — music videos, commercials and fashion films, several of them internationally awarded.</p>
         <p data-i18n="about.p3">I built and calibrated my own grading suite from the ground up, so I understand the craft from the panel to the final master. I work comfortably with any format, camera or footage quality — including graphics, film and 360° video.</p>
-        <p data-i18n="about.p4"><strong>My main tool is DaVinci Resolve</strong>, alongside Adobe Premiere and Final Cut Pro. What drives me is simple: building images that stay with the viewer.</p>
+        <p data-i18n="about.p4"><strong>My main tool is DaVinci Resolve.</strong> What drives me is simple: building images that stay with the viewer.</p>
         <div class="tools">
           <div class="t-title" data-i18n="about.tools">Toolset</div>
           <div class="chips">
             <span class="chip">DaVinci Resolve</span>
-            <span class="chip">Adobe Premiere</span>
-            <span class="chip">Final Cut Pro</span>
+            <span class="chip">FSI (Flanders Scientific)</span>
+            <span class="chip">Louper</span>
+            <span class="chip">Dropbox</span>
             <span class="chip" data-i18n="chip.suite">Calibrated grading suite</span>
             <span class="chip" data-i18n="chip.remote">Remote workflow</span>
           </div>
@@ -358,13 +366,14 @@
       </div>
     </div>
 
-    <div class="statband reveal">
-      <div class="stat"><div class="n">14+</div><div class="l" data-i18n="stat.years">Years grading</div></div>
-      <div class="stat"><div class="n">300+</div><div class="l" data-i18n="stat.mv">Music videos</div></div>
-      <div class="stat"><div class="n">150+</div><div class="l" data-i18n="stat.com">Commercials</div></div>
-      <div class="stat"><div class="n">15+</div><div class="l" data-i18n="stat.feat">Feature films</div></div>
-      <div class="stat"><div class="n">10+</div><div class="l" data-i18n="stat.doc">Doc films</div></div>
-      <div class="stat"><div class="n">20+</div><div class="l" data-i18n="stat.brands">Global brands</div></div>
+    <div class="statband reveal" id="statband">
+      <svg class="veins" id="veins" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div class="stat"><div class="n" data-to="15" data-suf="+">0+</div><div class="l" data-i18n="stat.years">Years grading</div></div>
+      <div class="stat"><div class="n" data-to="300" data-suf="+">0+</div><div class="l" data-i18n="stat.mv">Music videos</div></div>
+      <div class="stat"><div class="n" data-to="200" data-suf="+">0+</div><div class="l" data-i18n="stat.com">Commercials</div></div>
+      <div class="stat"><div class="n" data-to="20" data-suf="+">0+</div><div class="l" data-i18n="stat.feat">Feature films</div></div>
+      <div class="stat"><div class="n" data-to="10" data-suf="+">0+</div><div class="l" data-i18n="stat.doc">Doc films</div></div>
+      <div class="stat"><div class="n" data-to="20" data-suf="+">0+</div><div class="l" data-i18n="stat.brands">Global brands</div></div>
     </div>
 
     <div class="studio reveal">
@@ -564,6 +573,55 @@
 
   document.getElementById('yr').textContent=new Date().getFullYear();
 
+  // animated stats: count-up + branching veins growing from the experience stat
+  (function(){
+    const band=document.getElementById('statband'), svg=document.getElementById('veins');
+    if(!band)return;
+    const stats=[...band.querySelectorAll('.stat')];
+    const ns=band.querySelectorAll('.n');
+    const NS='http://www.w3.org/2000/svg';
+    let animated=false;
+
+    function buildVeins(){
+      if(!svg||!stats.length)return;
+      const br=band.getBoundingClientRect(), W=br.width, H=br.height;
+      svg.setAttribute('viewBox','0 0 '+W+' '+H);
+      while(svg.firstChild) svg.removeChild(svg.firstChild);
+      const anchor=el=>{const r=el.getBoundingClientRect();return {x:r.left-br.left+r.width/2, y:r.bottom-br.top+10};};
+      const root=anchor(stats[0]), depth=H-12;
+      const mk=(tag,a)=>{const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);return e;};
+      for(let i=1;i<stats.length;i++){
+        const t=anchor(stats[i]);
+        const d='M '+root.x+' '+root.y+' C '+root.x+' '+depth+', '+t.x+' '+depth+', '+t.x+' '+t.y;
+        svg.appendChild(mk('path',{d:d,'class':'vein'}));
+        const bx=(root.x+t.x)/2;
+        svg.appendChild(mk('path',{d:'M '+bx+' '+(depth-2)+' q '+((t.x-bx)*0.35)+' -16, '+((t.x-bx)*0.16)+' -34','class':'vein twig'}));
+        svg.appendChild(mk('circle',{cx:t.x,cy:t.y,r:'2.4','class':'vein-node'}));
+      }
+      svg.appendChild(mk('circle',{cx:root.x,cy:root.y,r:'3.4','class':'vein-node root'}));
+      svg.querySelectorAll('.vein').forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=animated?0:L;});
+    }
+    function drawAnim(){ if(svg) svg.querySelectorAll('.vein').forEach(p=>{p.style.strokeDashoffset=0;}); }
+    function countUp(){
+      ns.forEach(n=>{
+        const to=+n.dataset.to, suf=n.dataset.suf||'', dur=1500;
+        (function tick(now,t0){
+          const p=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-p,3);
+          n.textContent=Math.round(to*e)+suf;
+          if(p<1)requestAnimationFrame(t=>tick(t,t0));
+        })(performance.now(),performance.now());
+      });
+    }
+    function run(){ if(animated)return; animated=true; countUp(); requestAnimationFrame(drawAnim); }
+
+    buildVeins();
+    addEventListener('load',buildVeins);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(buildVeins);
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)run();}),{threshold:.35});
+    io.observe(band);
+    let rt; addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(buildVeins,180);});
+  })();
+
   // seamless logo marquee: duplicate the set
   const lt=document.getElementById('logoTrack');
   if(lt){lt.innerHTML+=lt.innerHTML;}
@@ -612,7 +670,7 @@
       list=Array.from({length:count},(_,i)=>dir+'frame-'+String(i+1).padStart(2,'0')+'.jpg');
       idx=list.findIndex(s=>cur.endsWith(s)); if(idx<0){list=[cur];idx=0;}
     }else{
-      const pg=img.closest('.poster-grid');
+      const pg=img.closest('.poster-grid, .studio-grid');
       if(pg){list=Array.from(pg.querySelectorAll('img[data-lb]')).map(i=>i.getAttribute('src'));idx=Math.max(0,list.indexOf(cur));}
       else{list=[cur];idx=0;}
     }
@@ -634,13 +692,13 @@
   const UA={
     'nav.about':`Про мене`,'nav.showreel':`Шоуріл`,'nav.stills':`Кадри`,'nav.films':`Кіно`,'nav.contact':`Контакти`,
     'hero.eyebrow':`Колорист · DaVinci Resolve`,
-    'hero.sub':`Колір для кіно, реклами та музичного відео — понад 14 років перетворюю матеріал на зображення, які запам'ятовуються.`,
+    'hero.sub':`Колір для кіно, реклами та музичного відео — понад 15 років перетворюю матеріал на зображення, які запам'ятовуються.`,
     'hero.cta1':`Дивитися шоуріл`,'hero.cta2':`Зв'язатися`,
     'about.label':`Про мене`,'about.h2':`Трохи про мене.`,'about.cap':`Колорист · DaVinci Resolve`,
-    'about.p1':`<strong>Я Костянтин Ліщина — колорист із досвідом понад 14 років у кіно, рекламі та музичному відео.</strong> Починав із монтажу музичних кліпів, що привело мене до операторської роботи, монтажу і згодом — до роботи виключно з кольором.`,
+    'about.p1':`<strong>Я Костянтин Ліщина — колорист із досвідом понад 15 років у кіно, рекламі та музичному відео.</strong> Починав із монтажу музичних кліпів у 2011 році, що привело мене до операторської роботи, монтажу і згодом — до роботи виключно з кольором.`,
     'about.p2':`За ці роки я робив колір для українських та міжнародних артистів, режисерів і брендів — музичні відео, реклама та fashion-фільми, деякі з них відзначені міжнародними нагородами.`,
     'about.p3':`Свою грейдинг-студію я збудував і відкалібрував з нуля, тож розумію процес від панелі до фінального мастера. Працюю з будь-яким форматом, камерою чи якістю матеріалу — включно з графікою, плівкою та відео 360°.`,
-    'about.p4':`<strong>Мій основний інструмент — DaVinci Resolve</strong>, поряд з Adobe Premiere та Final Cut Pro. Моя мета проста: створювати зображення, які залишаються з глядачем.`,
+    'about.p4':`<strong>Мій основний інструмент — DaVinci Resolve.</strong> Моя мета проста: створювати зображення, які залишаються з глядачем.`,
     'about.tools':`Інструменти`,'chip.suite':`Калібрована студія`,'chip.remote':`Віддалена робота`,
     'stat.years':`Років досвіду`,'stat.mv':`Музичних відео`,'stat.com':`Реклам`,
     'stat.feat':`Повнометражних фільмів`,'stat.doc':`Документальних фільмів`,'stat.brands':`Світових брендів`,
