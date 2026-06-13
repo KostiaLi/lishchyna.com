@@ -81,9 +81,8 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
   .hero-content{position:relative;z-index:3;width:100%}
   .hero .eyebrow{font-size:13px;letter-spacing:.5em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
-  .hero h1{font-family:'Cormorant Garamond',serif;font-weight:400;
-    font-size:clamp(3rem,9vw,7.2rem);line-height:.96;letter-spacing:.01em;}
-  .hero h1 span{display:block}
+  .hero h1{font-family:'Inter',system-ui,sans-serif;font-weight:500;text-transform:uppercase;
+    font-size:clamp(1.5rem,3.3vw,2.5rem);line-height:1.25;letter-spacing:.26em;}
   .hero .sub{margin-top:24px;color:var(--muted);font-size:clamp(14px,1.6vw,17px);letter-spacing:.04em;max-width:540px}
   .cta-row{margin-top:40px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
   .btn{display:inline-flex;align-items:center;gap:12px;
@@ -199,8 +198,26 @@
     display:flex;align-items:center;justify-content:center;padding:20px 24px}
   .logo-card img{max-width:100%;max-height:100%;object-fit:contain}
   @keyframes marquee{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-  .brand-more{margin-top:30px;color:var(--muted);font-size:14.5px;letter-spacing:.02em}
+  .brand-more{margin-top:26px;color:var(--faint);font-size:14px;letter-spacing:.02em;font-style:italic;font-family:'Cormorant Garamond',serif}
   .brand-more b{color:var(--text);font-weight:500}
+  /* elegant client list */
+  .client-list{list-style:none;columns:3;column-gap:56px;margin-top:26px;max-width:860px}
+  .client-list li{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--muted);
+    padding:13px 0;border-bottom:1px solid var(--line);break-inside:avoid;transition:color .25s,padding-left .25s}
+  .client-list li:hover{color:var(--text);padding-left:8px}
+  @media(max-width:720px){.client-list{columns:2;column-gap:36px}}
+  @media(max-width:430px){.client-list{columns:1}}
+  /* sub-block under a stills category */
+  .subblock{margin-top:30px;padding-top:28px;border-top:1px solid var(--line)}
+  .subblock .client-list{margin-top:18px}
+  .subblock .brand-more{margin-top:18px}
+  /* compact, expressive artist wall */
+  .mini-wall{display:flex;flex-wrap:wrap;align-items:baseline;margin-top:16px;max-width:940px}
+  .mini-wall .a{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--text);opacity:.62;
+    transition:opacity .25s,color .25s;cursor:default;line-height:1.5}
+  .mini-wall .a:hover{opacity:1;color:var(--accent)}
+  .mini-wall .sep{color:var(--accent);opacity:.45;margin:0 13px;font-size:.7rem;transform:translateY(-3px)}
+  @media(max-width:560px){.mini-wall .a{font-size:1.2rem}.mini-wall .sep{margin:0 9px}}
 
   /* ---------- POSTERS ---------- */
   .grp{margin:56px 0 6px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
@@ -231,8 +248,16 @@
   .lb{position:fixed;inset:0;background:rgba(5,5,7,.95);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:200;padding:32px;cursor:zoom-out}
   .lb.open{display:flex}
   .lb img{max-width:94vw;max-height:90vh;border-radius:6px;box-shadow:0 40px 120px rgba(0,0,0,.7)}
-  .lb .lb-close{position:absolute;top:18px;right:26px;color:#fff;font-size:34px;line-height:1;cursor:pointer;opacity:.7;transition:opacity .2s}
+  .lb .lb-close{position:absolute;top:18px;right:26px;color:#fff;font-size:34px;line-height:1;cursor:pointer;opacity:.7;transition:opacity .2s;z-index:3}
   .lb .lb-close:hover{opacity:1}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:50px;height:50px;border-radius:50%;
+    background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff;font-size:26px;line-height:1;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,opacity .2s}
+  .lb-nav:hover{background:rgba(255,255,255,.18)}
+  .lb-nav.prev{left:22px}.lb-nav.next{right:22px}
+  .lb-count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:3;
+    color:var(--muted);font-size:12px;letter-spacing:.2em}
+  @media(max-width:560px){.lb-nav{width:42px;height:42px;font-size:22px}.lb-nav.prev{left:10px}.lb-nav.next{right:10px}}
 
   /* ---------- LANG TOGGLE ---------- */
   .lang-btn{background:none;border:1px solid var(--line);color:var(--muted);font-size:11px;letter-spacing:.14em;
@@ -244,8 +269,8 @@
   /* ---------- STUDIO ---------- */
   .studio{margin-top:64px}
   .studio .t-title{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:16px}
-  .studio-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:14px}
-  .studio-grid figure{margin:0;aspect-ratio:4/3;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#000}
+  .studio-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .studio-grid figure{margin:0;aspect-ratio:3/2;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#000}
   .studio-grid img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;opacity:.95;transition:transform .5s,opacity .3s}
   .studio-grid figure:hover img{transform:scale(1.04);opacity:1}
   @media(max-width:700px){.studio-grid{grid-template-columns:1fr}}
@@ -268,8 +293,6 @@
     <a href="#about" data-i18n="nav.about">About</a>
     <a href="#showreel" data-i18n="nav.showreel">Showreel</a>
     <a href="#stills" data-i18n="nav.stills">Stills</a>
-    <a href="#work" data-i18n="nav.work">Work</a>
-    <a href="#brands" data-i18n="nav.brands">Brands</a>
     <a href="#films" data-i18n="nav.films">Films</a>
     <a href="#contact" data-i18n="nav.contact">Contact</a>
   </div>
@@ -290,7 +313,7 @@
   <div class="hero-content">
     <div class="wrap">
       <div class="eyebrow reveal" data-i18n="hero.eyebrow">Colorist · DaVinci Resolve</div>
-      <h1 class="reveal"><span>Kostiantyn</span><span>Lishchyna</span></h1>
+      <h1 class="reveal">Kostiantyn Lishchyna</h1>
       <p class="sub reveal" data-i18n="hero.sub">Crafting color for film, advertising and music video — 14+ years turning footage into images that stay with the viewer.</p>
       <div class="cta-row reveal">
         <a class="btn" href="https://vimeo.com/719040496" target="_blank" rel="noopener"><span class="play">▶</span> <span data-i18n="hero.cta1">Watch Showreel</span></a>
@@ -311,17 +334,17 @@
 <section id="about">
   <div class="wrap">
     <div class="sec-label reveal" data-i18n="about.label">About</div>
-    <h2 class="reveal" data-i18n="about.h2">Hey — great to see you.</h2>
+    <h2 class="reveal" data-i18n="about.h2">A bit about me.</h2>
     <div class="about-grid" style="margin-top:46px">
       <figure class="portrait reveal">
         <img src="assets/web/portrait.jpg" alt="Kostiantyn Lishchyna, colorist" loading="lazy" />
         <figcaption class="cap">Kostiantyn Lishchyna<span data-i18n="about.cap">Colorist · DaVinci Resolve</span></figcaption>
       </figure>
       <div class="reveal">
-        <p data-i18n="about.p1"><strong>My name is Kostiantyn Lishchyna, and I'm a colorist with over 14 years of experience</strong> in the film, advertising and music video industries. My journey started in a video rental store during my school years, moved through editing music videos, and eventually led me to cinematography, editing and — exclusively — working with color.</p>
-        <p data-i18n="about.p2">I've collaborated with Ukrainian and international artists and directors, helping them bring their creative visions to life through color. My work spans music videos, advertising campaigns and fashion films for well-known brands, some of which have received international awards.</p>
-        <p data-i18n="about.p3">I built my studio from scratch — selecting and calibrating monitors and essential equipment — which gave me a deep understanding of the technical nuances behind a high-quality final product. I'm comfortable with footage of any format, length or quality, from every type of camera, including graphics, film and 360° video.</p>
-        <p data-i18n="about.p4"><strong>My primary tool is DaVinci Resolve</strong>, with experience in Adobe Premiere and Final Cut Pro. My passion for cinema and deep experience in color grading let me create unforgettable images that enrich the visual experience of viewers.</p>
+        <p data-i18n="about.p1"><strong>I'm Kostiantyn Lishchyna — a colorist with 14+ years in film, advertising and music video.</strong> I started out editing music videos, which drew me into cinematography and editing, and eventually into working exclusively with color.</p>
+        <p data-i18n="about.p2">Over the years I've graded for Ukrainian and international artists, directors and brands — music videos, commercials and fashion films, several of them internationally awarded.</p>
+        <p data-i18n="about.p3">I built and calibrated my own grading suite from the ground up, so I understand the craft from the panel to the final master. I work comfortably with any format, camera or footage quality — including graphics, film and 360° video.</p>
+        <p data-i18n="about.p4"><strong>My main tool is DaVinci Resolve</strong>, alongside Adobe Premiere and Final Cut Pro. What drives me is simple: building images that stay with the viewer.</p>
         <div class="tools">
           <div class="t-title" data-i18n="about.tools">Toolset</div>
           <div class="chips">
@@ -371,61 +394,70 @@
   <div class="wrap">
     <div class="sec-label reveal" data-i18n="stills.label">Frames</div>
     <h2 class="reveal" data-i18n="stills.h2">Stills from recent work.</h2>
-    <p class="lead reveal" style="margin-bottom:34px" data-i18n="stills.lead">A selection of graded frames across music videos, commercials and fashion film.</p>
-    <div class="stills-grid reveal" id="stillsGrid"></div>
-    <p class="stills-hint reveal" data-i18n="stills.hint">Frames rotate automatically · click any to enlarge</p>
-  </div>
-</section>
+    <p class="lead reveal" data-i18n="stills.lead">A selection of graded frames across music videos, commercials and film.</p>
+    <p class="stills-hint reveal" style="margin-top:10px" data-i18n="stills.hint">Frames rotate automatically · click any to enlarge</p>
 
-<!-- WORK / ARTISTS -->
-<section id="work">
-  <div class="wrap">
-    <div class="sec-label reveal" data-i18n="work.label">Music Videos</div>
-    <h2 class="reveal" data-i18n="work.h2">Artists I've graded for.</h2>
-    <p class="lead reveal" style="margin-bottom:34px" data-i18n="work.lead">Color for Ukrainian and international musicians and their directors.</p>
-    <div class="artist-wall reveal">
-      <span class="artist">Ziferblat</span><span class="artist dot">·</span>
-      <span class="artist">Alyona Alyona</span><span class="artist dot">·</span>
-      <span class="artist">Kalush</span><span class="artist dot">·</span>
-      <span class="artist">Artem Pivovarov</span><span class="artist dot">·</span>
-      <span class="artist">Melovin</span><span class="artist dot">·</span>
-      <span class="artist">Zlata Ognevich</span><span class="artist dot">·</span>
-      <span class="artist">Tina Karol</span><span class="artist dot">·</span>
-      <span class="artist">Kurgan</span><span class="artist dot">·</span>
-      <span class="artist">KOLA</span><span class="artist dot">·</span>
-      <span class="artist">Positiff</span><span class="artist dot">·</span>
-      <span class="artist">Luna</span><span class="artist dot">·</span>
-      <span class="artist">Mariya Kondratenko</span><span class="artist dot">·</span>
-      <span class="artist">Cepasa</span><span class="artist dot">·</span>
-      <span class="artist">bbno$</span><span class="artist dot">·</span>
-      <span class="artist">JavyDade</span><span class="artist dot">·</span>
-      <span class="artist">Ice Cube</span>
-    </div>
-  </div>
-</section>
-
-<!-- BRANDS -->
-<section id="brands" class="brands-sec">
-  <div class="wrap">
-    <div class="sec-label reveal" data-i18n="brands.label">Advertising &amp; Fashion Film</div>
-    <h2 class="reveal" data-i18n="brands.h2">Brands &amp; campaigns.</h2>
-    <p class="lead reveal" style="margin-bottom:34px" data-i18n="brands.lead">Commercials and fashion films for well-known names — some internationally awarded.</p>
-    <div class="marquee reveal">
-      <div class="m-track" id="logoTrack">
-        <div class="logo-card"><img src="assets/web/logos/logo-01.webp" alt="Maybelline" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-02.webp" alt="Vichy" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-03.webp" alt="Visa" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-04.webp" alt="Samsung" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-05.webp" alt="Nike" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-06.webp" alt="Uber" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-07.webp" alt="Volkswagen" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-08.webp" alt="Frolov" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-09.webp" alt="TTSWTRS" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-10.webp" alt="Logitech" loading="lazy"></div>
-        <div class="logo-card"><img src="assets/web/logos/logo-11.webp" alt="Bolt" loading="lazy"></div>
+    <!-- MUSIC VIDEOS -->
+    <div class="grp first reveal"><span class="gt" data-i18n="stills.music">Music videos</span></div>
+    <div class="stills-grid reveal" data-dir="music" data-count="55"></div>
+    <div class="subblock reveal">
+      <div class="t-title" data-i18n="work.h2">Artists I've graded for</div>
+      <div class="mini-wall">
+        <span class="a">Ziferblat</span><span class="sep">·</span>
+        <span class="a">Alyona Alyona</span><span class="sep">·</span>
+        <span class="a">Kalush</span><span class="sep">·</span>
+        <span class="a">Artem Pivovarov</span><span class="sep">·</span>
+        <span class="a">Melovin</span><span class="sep">·</span>
+        <span class="a">Zlata Ognevich</span><span class="sep">·</span>
+        <span class="a">Tina Karol</span><span class="sep">·</span>
+        <span class="a">Kurgan</span><span class="sep">·</span>
+        <span class="a">KOLA</span><span class="sep">·</span>
+        <span class="a">Positiff</span><span class="sep">·</span>
+        <span class="a">Luna</span><span class="sep">·</span>
+        <span class="a">Mariya Kondratenko</span><span class="sep">·</span>
+        <span class="a">Cepasa</span><span class="sep">·</span>
+        <span class="a">bbno$</span><span class="sep">·</span>
+        <span class="a">JavyDade</span><span class="sep">·</span>
+        <span class="a">Ice Cube</span>
       </div>
     </div>
-    <p class="brand-more reveal" data-i18n="brands.more">Also: <b>L'Oréal</b>, <b>Adidas</b>, <b>Lexus</b>, <b>Cupra</b>, <b>Sprite</b>, <b>MacPaw</b>, <b>Hankey Bannister</b>, <b>Mova</b> and many others.</p>
+
+    <!-- COMMERCIALS -->
+    <div class="grp reveal"><span class="gt" data-i18n="stills.ads">Commercials</span></div>
+    <div class="stills-grid reveal" data-dir="ads" data-count="15"></div>
+    <div class="subblock reveal">
+      <div class="t-title" data-i18n="brands.h2">Brands &amp; campaigns</div>
+      <div class="mini-wall">
+        <span class="a">L'Oréal</span><span class="sep">·</span>
+        <span class="a">Maybelline</span><span class="sep">·</span>
+        <span class="a">Vichy</span><span class="sep">·</span>
+        <span class="a">Nike</span><span class="sep">·</span>
+        <span class="a">Adidas</span><span class="sep">·</span>
+        <span class="a">Samsung</span><span class="sep">·</span>
+        <span class="a">Visa</span><span class="sep">·</span>
+        <span class="a">Uber</span><span class="sep">·</span>
+        <span class="a">Bolt</span><span class="sep">·</span>
+        <span class="a">Lexus</span><span class="sep">·</span>
+        <span class="a">Cupra</span><span class="sep">·</span>
+        <span class="a">Volkswagen</span><span class="sep">·</span>
+        <span class="a">Logitech</span><span class="sep">·</span>
+        <span class="a">Sprite</span><span class="sep">·</span>
+        <span class="a">MacPaw</span><span class="sep">·</span>
+        <span class="a">Frolov</span><span class="sep">·</span>
+        <span class="a">TTSWTRS</span><span class="sep">·</span>
+        <span class="a">Hankey Bannister</span><span class="sep">·</span>
+        <span class="a">Mova</span>
+      </div>
+      <p class="brand-more" data-i18n="brands.more">…and many others.</p>
+    </div>
+
+    <!-- DOCUMENTARY -->
+    <div class="grp reveal"><span class="gt" data-i18n="stills.doc">Documentary</span></div>
+    <div class="stills-grid reveal" data-dir="doc" data-count="10"></div>
+
+    <!-- CINEMA -->
+    <div class="grp reveal"><span class="gt" data-i18n="stills.film">Cinema</span></div>
+    <div class="stills-grid reveal" data-dir="film" data-count="15"></div>
   </div>
 </section>
 
@@ -434,7 +466,7 @@
   <div class="wrap">
     <div class="sec-label reveal" data-i18n="films.label">Cinema</div>
     <h2 class="reveal" data-i18n="films.h2">Feature films.</h2>
-    <p class="lead reveal" style="margin-bottom:6px" data-i18n="films.lead">Lead (senior) colorist on Ukrainian features and assistant colorist on Hollywood features.</p>
+    <p class="lead reveal" style="margin-bottom:6px" data-i18n="films.lead">Lead (senior) colorist on Ukrainian features and second colorist on Hollywood features.</p>
 
     <div class="grp first reveal"><span class="gt" data-i18n="films.g1t">Ukrainian features</span><span class="gr" data-i18n="films.g1r">Senior colorist</span></div>
     <div class="poster-grid reveal">
@@ -445,7 +477,7 @@
       <div class="poster"><img src="assets/web/posters/poster-19.webp" alt="The Adventures of St. Nicholas" loading="lazy" data-lb></div>
     </div>
 
-    <div class="grp reveal"><span class="gt" data-i18n="films.g2t">Hollywood features</span><span class="gr" data-i18n="films.g2r">Assistant colorist</span></div>
+    <div class="grp reveal"><span class="gt" data-i18n="films.g2t">Hollywood features</span><span class="gr" data-i18n="films.g2r">Second colorist</span></div>
     <div class="poster-grid reveal">
       <div class="poster"><img src="assets/web/posters/poster-02.webp" alt="Best Man" loading="lazy" data-lb></div>
       <div class="poster"><img src="assets/web/posters/poster-03.webp" alt="Detective Knight: Redemption" loading="lazy" data-lb></div>
@@ -464,8 +496,8 @@
     </div>
 
     <div class="holly reveal">
-      <h3 data-i18n="holly.h3">Assistant colorist — Hollywood features</h3>
-      <p data-i18n="holly.p">As an assistant colorist I've worked on Hollywood films featuring some of the industry's biggest stars, in collaboration with major studios.</p>
+      <h3 data-i18n="holly.h3">Second colorist — Hollywood features</h3>
+      <p data-i18n="holly.p">As a second colorist I graded shots to the look developed by the lead colorist, on Hollywood films featuring some of the industry's biggest stars, in collaboration with major studios.</p>
       <div class="names">
         <span class="name">Bruce Willis</span>
         <span class="name">John Travolta</span>
@@ -495,7 +527,13 @@
   </div>
 </section>
 
-<div class="lb" id="lightbox"><span class="lb-close" id="lbClose">×</span><img id="lbImg" src="" alt=""></div>
+<div class="lb" id="lightbox">
+  <span class="lb-close" id="lbClose">×</span>
+  <button class="lb-nav prev" id="lbPrev" aria-label="previous">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-nav next" id="lbNext" aria-label="next">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
 
 <footer>
   © <span id="yr"></span> Kostiantyn Lishchyna — <span data-i18n="footer.tag">Colorist · Remote worldwide</span>
@@ -530,87 +568,97 @@
   const lt=document.getElementById('logoTrack');
   if(lt){lt.innerHTML+=lt.innerHTML;}
 
-  // rotating stills grid
-  (function(){
-    const grid=document.getElementById('stillsGrid');
-    if(!grid)return;
-    const POOL=53, TILES=12;
-    const all=Array.from({length:POOL},(_,i)=>`assets/web/stills/still-${String(i+1).padStart(2,'0')}.jpg`);
-    // shuffle pool
+  // rotating stills grids by category
+  document.querySelectorAll('.stills-grid[data-dir]').forEach(grid=>{
+    const dir='assets/web/frames/'+grid.dataset.dir+'/';
+    const count=+grid.dataset.count;
+    const all=Array.from({length:count},(_,i)=>dir+'frame-'+String(i+1).padStart(2,'0')+'.jpg');
     for(let i=all.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[all[i],all[j]]=[all[j],all[i]];}
-    const shown=all.slice(0,TILES);
-    let pointer=TILES;
-    shown.forEach(src=>{
+    const TILES=Math.min(8,count);
+    all.slice(0,TILES).forEach(src=>{
       const cell=document.createElement('div');cell.className='cell';
       const img=document.createElement('img');img.src=src;img.alt='Graded frame';img.loading='lazy';img.dataset.lb='';
       cell.appendChild(img);grid.appendChild(cell);
     });
+    if(count<=TILES)return;
     const imgs=Array.from(grid.querySelectorAll('img'));
-    function nextSrc(){
-      // next image from pool not currently displayed
-      let tries=0;
-      while(tries<POOL){
-        const s=all[pointer%POOL];pointer++;tries++;
-        if(!imgs.some(im=>im.getAttribute('src')===s))return s;
-      }
-      return all[pointer%POOL];
-    }
-    let paused=false;
+    let ptr=TILES,paused=false;
     grid.addEventListener('mouseenter',()=>paused=true);
     grid.addEventListener('mouseleave',()=>paused=false);
-    setInterval(()=>{
+    function nextSrc(){let t=0;while(t<count){const s=all[ptr%count];ptr++;t++;if(!imgs.some(im=>im.getAttribute('src')===s))return s;}return all[ptr%count];}
+    setTimeout(()=>setInterval(()=>{
       if(paused||document.hidden)return;
       const img=imgs[Math.random()*imgs.length|0];
       const src=nextSrc();
-      const pre=new Image();pre.onload=()=>{
-        img.classList.add('swap');
-        setTimeout(()=>{img.setAttribute('src',src);img.classList.remove('swap');},700);
-      };pre.src=src;
-    },2600);
-  })();
+      const pre=new Image();pre.onload=()=>{img.classList.add('swap');setTimeout(()=>{img.setAttribute('src',src);img.classList.remove('swap');},700);};pre.src=src;
+    },2800), Math.random()*2200);
+  });
 
-  // lightbox (event delegation — covers dynamic stills)
-  const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg');
-  function openLb(src){lbImg.src=src;lb.classList.add('open');document.body.style.overflow='hidden';}
-  function closeLb(){lb.classList.remove('open');document.body.style.overflow='';lbImg.src='';}
+  // lightbox gallery — swipe / arrow through the block it belongs to
+  const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg'),lbCount=document.getElementById('lbCount');
+  let lbList=[],lbIdx=0;
+  function renderLb(){lbImg.setAttribute('src',lbList[lbIdx]);lbCount.textContent=lbList.length>1?(lbIdx+1)+' / '+lbList.length:'';}
+  function openLb(list,idx){lbList=list;lbIdx=idx;renderLb();lb.classList.add('open');document.body.style.overflow='hidden';}
+  function closeLb(){lb.classList.remove('open');document.body.style.overflow='';lbImg.removeAttribute('src');lbList=[];}
+  function step(d){if(lbList.length<2)return;lbIdx=(lbIdx+d+lbList.length)%lbList.length;renderLb();}
   document.addEventListener('click',e=>{
     const img=e.target.closest('img[data-lb]');
-    if(img&&!lb.classList.contains('open')){openLb(img.currentSrc||img.getAttribute('src'));}
+    if(!img||lb.classList.contains('open'))return;
+    const cur=img.getAttribute('src');
+    const grid=img.closest('.stills-grid[data-dir]');
+    let list,idx;
+    if(grid){
+      const dir='assets/web/frames/'+grid.dataset.dir+'/',count=+grid.dataset.count;
+      list=Array.from({length:count},(_,i)=>dir+'frame-'+String(i+1).padStart(2,'0')+'.jpg');
+      idx=list.findIndex(s=>cur.endsWith(s)); if(idx<0){list=[cur];idx=0;}
+    }else{
+      const pg=img.closest('.poster-grid');
+      if(pg){list=Array.from(pg.querySelectorAll('img[data-lb]')).map(i=>i.getAttribute('src'));idx=Math.max(0,list.indexOf(cur));}
+      else{list=[cur];idx=0;}
+    }
+    openLb(list,idx);
   });
+  document.getElementById('lbPrev').addEventListener('click',e=>{e.stopPropagation();step(-1);});
+  document.getElementById('lbNext').addEventListener('click',e=>{e.stopPropagation();step(1);});
+  lbImg.addEventListener('click',e=>e.stopPropagation());
   lb.addEventListener('click',closeLb);
-  document.getElementById('lbClose').addEventListener('click',closeLb);
-  addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();});
+  document.getElementById('lbClose').addEventListener('click',e=>{e.stopPropagation();closeLb();});
+  addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')closeLb();else if(e.key==='ArrowLeft')step(-1);else if(e.key==='ArrowRight')step(1);});
+  let tsx=0,tsy=0;
+  lb.addEventListener('touchstart',e=>{tsx=e.changedTouches[0].clientX;tsy=e.changedTouches[0].clientY;},{passive:true});
+  lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tsx,dy=e.changedTouches[0].clientY-tsy;
+    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))step(dx<0?1:-1);},{passive:true});
 
   // ---------- i18n: EN / UA ----------
   const UA={
-    'nav.about':`Про мене`,'nav.showreel':`Шоуріл`,'nav.stills':`Кадри`,'nav.work':`Кліпи`,
-    'nav.brands':`Бренди`,'nav.films':`Кіно`,'nav.contact':`Контакти`,
+    'nav.about':`Про мене`,'nav.showreel':`Шоуріл`,'nav.stills':`Кадри`,'nav.films':`Кіно`,'nav.contact':`Контакти`,
     'hero.eyebrow':`Колорист · DaVinci Resolve`,
     'hero.sub':`Колір для кіно, реклами та музичного відео — понад 14 років перетворюю матеріал на зображення, які запам'ятовуються.`,
     'hero.cta1':`Дивитися шоуріл`,'hero.cta2':`Зв'язатися`,
-    'about.label':`Про мене`,'about.h2':`Привіт — радий вас бачити.`,'about.cap':`Колорист · DaVinci Resolve`,
-    'about.p1':`<strong>Мене звати Костянтин Ліщина, я колорист із понад 14-річним досвідом</strong> у кіно, рекламі та музичному відео. Мій шлях почався ще зі шкільних років у пункті відеопрокату, далі — монтаж музичних кліпів, що згодом привів мене до операторської роботи, монтажу і — виключно — роботи з кольором.`,
-    'about.p2':`Я співпрацював з українськими та міжнародними артистами й режисерами, допомагаючи втілювати їхні творчі задуми через колір. Моя робота охоплює музичні відео, рекламні кампанії та fashion-фільми для відомих брендів, деякі з яких отримали міжнародні нагороди.`,
-    'about.p3':`Свою студію я збудував з нуля — підбирав і калібрував монітори та необхідне обладнання, що дало глибоке розуміння технічних нюансів якісного фінального продукту. Я працюю з матеріалом будь-якого формату, тривалості чи якості, з усіх типів камер — включно з графікою, плівкою та відео 360°.`,
-    'about.p4':`<strong>Мій основний інструмент — DaVinci Resolve</strong>, також маю досвід роботи в Adobe Premiere та Final Cut Pro. Любов до кіно й глибокий досвід у кольорокорекції дають мені змогу створювати незабутні образи, що збагачують візуальне сприйняття глядача.`,
+    'about.label':`Про мене`,'about.h2':`Трохи про мене.`,'about.cap':`Колорист · DaVinci Resolve`,
+    'about.p1':`<strong>Я Костянтин Ліщина — колорист із досвідом понад 14 років у кіно, рекламі та музичному відео.</strong> Починав із монтажу музичних кліпів, що привело мене до операторської роботи, монтажу і згодом — до роботи виключно з кольором.`,
+    'about.p2':`За ці роки я робив колір для українських та міжнародних артистів, режисерів і брендів — музичні відео, реклама та fashion-фільми, деякі з них відзначені міжнародними нагородами.`,
+    'about.p3':`Свою грейдинг-студію я збудував і відкалібрував з нуля, тож розумію процес від панелі до фінального мастера. Працюю з будь-яким форматом, камерою чи якістю матеріалу — включно з графікою, плівкою та відео 360°.`,
+    'about.p4':`<strong>Мій основний інструмент — DaVinci Resolve</strong>, поряд з Adobe Premiere та Final Cut Pro. Моя мета проста: створювати зображення, які залишаються з глядачем.`,
     'about.tools':`Інструменти`,'chip.suite':`Калібрована студія`,'chip.remote':`Віддалена робота`,
     'stat.years':`Років досвіду`,'stat.mv':`Музичних відео`,'stat.com':`Реклам`,
     'stat.feat':`Повнометражних фільмів`,'stat.doc':`Документальних фільмів`,'stat.brands':`Світових брендів`,
     'studio.title':`Студія`,
     'reel.label':`Шоуріл`,'reel.h2':`Погляд на роботи.`,'reel.lead':`Добірка нещодавньої кольорокорекції — музичні відео, реклама та кіно.`,
     'stills.label':`Кадри`,'stills.h2':`Кадри з нещодавніх робіт.`,
-    'stills.lead':`Добірка кадрів з кольорокорекцією — музичні відео, реклама та fashion-фільми.`,
+    'stills.lead':`Добірка кадрів з кольорокорекцією — музичні кліпи, реклама та кіно.`,
     'stills.hint':`Кадри змінюються автоматично · натисніть, щоб збільшити`,
-    'work.label':`Музичні відео`,'work.h2':`Артисти, яким я робив колір.`,'work.lead':`Колір для українських та міжнародних музикантів і їхніх режисерів.`,
-    'brands.label':`Реклама та Fashion-фільми`,'brands.h2':`Бренди та кампанії.`,
-    'brands.lead':`Реклама та fashion-фільми для відомих імен — деякі відзначені міжнародними нагородами.`,
-    'brands.more':`Також: <b>L'Oréal</b>, <b>Adidas</b>, <b>Lexus</b>, <b>Cupra</b>, <b>Sprite</b>, <b>MacPaw</b>, <b>Hankey Bannister</b>, <b>Mova</b> та багато інших.`,
+    'stills.music':`Музичні кліпи`,'stills.ads':`Реклама`,'stills.film':`Кіно`,'stills.doc':`Документальне кіно`,
+    'work.h2':`Артисти, яким я робив колір`,
+    'brands.h2':`Бренди та кампанії`,
+    'brands.more':`…та багато інших.`,
     'films.label':`Кіно`,'films.h2':`Повнометражні фільми.`,
-    'films.lead':`Головний (senior) колорист українських фільмів та асистент колориста голлівудських стрічок.`,
+    'films.lead':`Головний (senior) колорист українських фільмів та другий колорист голлівудських стрічок.`,
     'films.g1t':`Українські фільми`,'films.g1r':`Головний колорист`,
-    'films.g2t':`Голлівудські фільми`,'films.g2r':`Асистент колориста`,
-    'holly.h3':`Асистент колориста — голлівудські фільми`,
-    'holly.p':`Як асистент колориста я працював над голлівудськими фільмами за участю найбільших зірок індустрії, у співпраці з провідними студіями.`,
+    'films.g2t':`Голлівудські фільми`,'films.g2r':`Другий колорист`,
+    'holly.h3':`Другий колорист — голлівудські фільми`,
+    'holly.p':`Як другий колорист я фарбував кадри під лук, розроблений головним колористом, у голлівудських фільмах за участю найбільших зірок індустрії та у співпраці з провідними студіями.`,
     'contact.label':`Контакти`,'contact.h2':`Зробімо колір вашого наступного проєкту.`,'contact.reel':`Vimeo · Шоуріл`,
     'footer.tag':`Колорист · Працюю віддалено по всьому світу`
   };
